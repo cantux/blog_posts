@@ -7,6 +7,6 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - run: gh workflow run deploy.yml -R cantux/blog_impl
+      - run: gh api -X POST repos/cantux/blog_impl/actions/workflows/deploy.yml/dispatches -f ref=main
         env:
           GH_TOKEN: ${{ secrets.IMPL_ACTIONS_TOKEN }}
