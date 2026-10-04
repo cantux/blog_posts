@@ -1,0 +1,12 @@
+name: Deploy site
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - run: gh workflow run deploy.yml -R cantux/blog_impl
+        env:
+          GH_TOKEN: ${{ secrets.IMPL_ACTIONS_TOKEN }}
